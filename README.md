@@ -1,31 +1,77 @@
-## Application Feature
+# React Slingshot!
 
-* it's a todolist that helps you identify your key tasks and keep you focused.
-* it reminds you to make sure that the key tasks are completed
-* incomplete tasks are archived, and will be offered as suggestion for the task for the next day
-* targetting desktop and mobile-web currently, native mobile app in future.
+[![Build status: Linux](https://img.shields.io/travis/coryhouse/react-slingshot.svg?style=flat-square)](https://travis-ci.org/coryhouse/react-slingshot)
+[![Build status: Windows](https://ci.appveyor.com/api/projects/status/ky0npqkot20ieiak?svg=true)](https://ci.appveyor.com/project/coryhouse/react-slingshot/branch/master)
+[![Dependency Status](https://david-dm.org/coryhouse/react-slingshot.svg?style=flat-square)](https://david-dm.org/coryhouse/react-slingshot)
+[![Coverage Status](https://coveralls.io/repos/github/coryhouse/react-slingshot/badge.svg?branch=master)](https://coveralls.io/github/coryhouse/react-slingshot?branch=master)
 
-## More details about application
+React Slingshot is a comprehensive starter kit for rapid application development using React. 
 
-### Application usage strategy
+Why Slingshot?
 
-Users are prompted every night to come up with 4 tasks that they want to accomplish tomorrow. They may key in brand new tasks, or pick from their own archive of incompleted tasks and saved future tasks (not sure if we need to split them up or put them in the same catergory)
+1. **One command to get started** - Type `npm start` to start development in your default browser.
+2. **Rapid feedback** - Each time you hit save, changes hot reload and linting and automated tests run.
+3. **One command line to check** - All feedback is displayed on a single command line.
+4. **No more JavaScript fatigue** - Slingshot uses the most popular and powerful libraries for working with React.
+5. **Working example app** - The included example app shows how this all works together.
+6. **Automated production build** - Type `npm run build` to do all this:
 
-During the course of the next day, the user is free to add new tasks if necessary.
+[![React Slingshot Production Build](https://img.youtube.com/vi/qlfDLsX-J0U/0.jpg)](https://www.youtube.com/watch?v=qlfDLsX-J0U)
 
-At the end of the day, there will be a report that shows the user what is the task completion rate. This will be a useful reminder for users on the tasks they had forgotten about, or pushed aside due to other obligation. It can help the users to understand that they had spent their time distracted by other minor task, instead of their main tasks. Users may decide to actively say no in the day, to stay focus on their main tasks.
+## Get Started
+1. **Initial Machine Setup**. First time running the starter kit? Then complete the [Initial Machine Setup](https://github.com/coryhouse/react-slingshot#initial-machine-setup).
+2. **Clone the project**. `git clone https://github.com/coryhouse/react-slingshot.git`.
+3. **Run the setup script**. `npm run setup`
+4. **Run the example app**. `npm start -s`
+This will run the automated build process, start up a webserver, and open the application in your default browser. When doing development with this kit, this command will continue watching all your files. Every time you hit save the code is rebuilt, linting runs, and tests run automatically. Note: The -s flag is optional. It enables silent mode which suppresses unnecessary messages during the build.
+5. **Review the example app.** This starter kit includes a working example app that calculates fuel savings. Note how all source code is placed under /src. Tests are placed alongside the file under test. The final built app is placed under /dist. These are the files you run in production.
+6. **Delete the example app files.** Once you're comfortable with how the example app works, you can [delete those files and begin creating your own app](https://github.com/coryhouse/react-slingshot/blob/master/docs/FAQ.md#i-just-want-an-empty-starter-kit). 
+7. **Having issues?** See "Having Issues?" below.
 
-Finally to complete the cycle, the user will be prompted to create the next 4 tasks for the next day, either completely new ones or from their previous tasks.
+##Initial Machine Setup
+1. **Install [Node 4.0.0 or greater](https://nodejs.org)** - (5.0 or greater is recommended for optimal build performance). Need to run multiple versions of Node? Use [nvm](https://github.com/creationix/nvm).
+2. **Install [Git](https://git-scm.com/downloads)**. 
+3. **[Disable safe write in your editor](http://webpack.github.io/docs/webpack-dev-server.html#working-with-editors-ides-supporting-safe-write)** to assure hot reloading works properly.
+4. On a Mac? You're all set. If you're on Linux or Windows, complete the steps for your OS below.  
+ 
+**On Linux:**  
 
-### Incomplete tasks
+ * Run this to [increase the limit](http://stackoverflow.com/questions/16748737/grunt-watch-error-waiting-fatal-error-watch-enospc) on the number of files Linux will watch. [Here's why](https://github.com/coryhouse/react-slingshot/issues/6).    
+`echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p` 
 
-There should be a chao sng(temp name) meter, for how long the task have been overdue (based on created date). Can think about some implementation on how to prod the user on these overdue tasks (make the font bigger? bolded? etc)
+**On Windows:** 
+ 
+* **Install [Python 2.7](https://www.python.org/downloads/)**. Some node modules may rely on node-gyp, which requires Python on Windows.
+* **Install C++ Compiler**. Browser-sync requires a C++ compiler on Windows. [Visual Studio Express](https://www.visualstudio.com/en-US/products/visual-studio-express-vs) comes bundled with a free C++ compiler. Or, if you already have Visual Studio installed: Open Visual Studio and go to File -> New -> Project -> Visual C++ -> Install Visual C++ Tools for Windows Desktop. The C++ compiler is used to compile browser-sync (and perhaps other Node modules).
 
-### 2 types of tasks
+## Having Issues? Try these things first.
+1. Make sure you ran all steps in [Get started](https://github.com/coryhouse/react-slingshot/blob/master/README.md#get-started) including the [initial machine setup](https://github.com/coryhouse/react-slingshot#initial-machine-setup).
+2. Run `npm install` - If you forget to do this, you'll see this: `babel-node: command not found`.
+3. Install the latest version of Node. Or install [Node 5.12.0](https://nodejs.org/download/release/v5.12.0/) if you're having issues on Windows. Node 6 has issues on some Windows machines.
+4. Make sure files with names that begin with a dot (.babelrc, .editorconfig, .eslintrc) are copied to the project directory root. This is easy to overlook is you copy this repository manually.
+5. Don't run the project from a symbolic link. It may cause issues with file watches.
+6. Delete any .eslintrc that you're storing in your user directory. Also, disable any ESLint plugin / custom rules that you've enabled within your editor. These will conflict with the ESLint rules defined in this project.
 
-1. immediate task
-1. future task
+##Technologies
+Slingshot offers a rich development experience using the following technologies:
 
-1) immediate task is for when the user decide that there is a new task to be added for today. it should be a quite and easy input, single line with task description, shouldn need anything else. Was thinking this can be a modal screen.
+| **Tech** | **Description** |**Learn More**|
+|----------|-------|---|
+|  [React](https://facebook.github.io/react/)  |   Fast, composable client-side components.    | [Pluralsight Course](https://www.pluralsight.com/courses/react-flux-building-applications)  |
+|  [Redux](http://redux.js.org) |  Enforces unidirectional data flows and immutable, hot reloadable store. Supports time-travel debugging. Lean alternative to [Facebook's Flux](https://facebook.github.io/flux/docs/overview.html).| [Pluralsight Course](http://www.pluralsight.com/courses/react-redux-react-router-es6)    |
+|  [React Router](https://github.com/reactjs/react-router) | A complete routing library for React | [Pluralsight Course](https://www.pluralsight.com/courses/react-flux-building-applications) |
+|  [Babel](http://babeljs.io) |  Compiles ES6 to ES5. Enjoy the new version of JavaScript today.     | [ES6 REPL](https://babeljs.io/repl/), [ES6 vs ES5](http://es6-features.org), [ES6 Katas](http://es6katas.org), [Pluralsight course](https://www.pluralsight.com/courses/javascript-fundamentals-es6)    |
+| [Webpack](http://webpack.github.io) | Bundles npm packages and our JS into a single file. Includes hot reloading via [react-transform-hmr](https://www.npmjs.com/package/react-transform-hmr). | [Quick Webpack How-to](https://github.com/petehunt/webpack-howto) [Pluralsight Course](https://www.pluralsight.com/courses/webpack-fundamentals)|
+| [Browsersync](https://www.browsersync.io/) | Lightweight development HTTP server that supports synchronized testing and debugging on multiple devices. | [Intro vid](https://www.youtube.com/watch?time_continue=1&v=heNWfzc7ufQ)|
+| [Mocha](http://mochajs.org) | Automated tests with [Chai](http://chaijs.com/) for assertions and [Enzyme](https://github.com/airbnb/enzyme) for DOM testing without a browser using Node. | [Pluralsight Course](https://www.pluralsight.com/courses/testing-javascript) |
+| [Isparta](https://github.com/douglasduteil/isparta) | Code coverage tool for ES6 code transpiled by Babel. | 
+| [TrackJS](https://trackjs.com/) | JavaScript error tracking. | [Free trial](https://my.trackjs.com/signup)|  
+| [ESLint](http://eslint.org/)| Lint JS. Reports syntax and style issues. Using [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for additional React specific linting rules. | |
+| [SASS](http://sass-lang.com/) | Compiled CSS styles with variables, functions, and more. | [Pluralsight Course](https://www.pluralsight.com/courses/better-css)|
+| [PostCSS](https://github.com/postcss/postcss) | Transform styles with JS plugins. Used to autoprefix CSS |
+| [Editor Config](http://editorconfig.org) | Enforce consistent editor settings (spaces vs tabs, etc). | [IDE Plugins](http://editorconfig.org/#download) |
+| [npm Scripts](https://docs.npmjs.com/misc/scripts)| Glues all this together in a handy automated build. | [Pluralsight course](https://www.pluralsight.com/courses/npm-build-tool-introduction), [Why not Gulp?](https://medium.com/@housecor/why-i-left-gulp-and-grunt-for-npm-scripts-3d6853dd22b8#.vtaziro8n)  |
 
-2) future task is for something that needs to be done in the near future, but not today. It helps to free the user from the responsibility to remember it, without losing focus for the day. It will appear as an suggestion during the end of the day report. Maybe we can add a checkbox for the add task dialog, so that default will be immediate, else intended it will become a future task.
+The starter kit includes a working example app that puts all of the above to use.
+## Questions?
+Check out the [FAQ](/docs/FAQ.md)

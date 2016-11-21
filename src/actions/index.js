@@ -1,3 +1,0 @@
-export const RESET_ERROR_MESSAGE = 'RESET_ERROR_MESSAGE';
-
-export const ADD_TASK = 'ADD_TASK';
