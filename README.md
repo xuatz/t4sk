@@ -5,18 +5,37 @@
 [![Dependency Status](https://david-dm.org/coryhouse/react-slingshot.svg?style=flat-square)](https://david-dm.org/coryhouse/react-slingshot)
 [![Coverage Status](https://coveralls.io/repos/github/coryhouse/react-slingshot/badge.svg?branch=master)](https://coveralls.io/github/coryhouse/react-slingshot?branch=master)
 
-React Slingshot is a comprehensive starter kit for rapid application development using React. 
+## Application Feature
 
-Why Slingshot?
+* it's a todolist that helps you identify your key tasks and keep you focused.
+* it reminds you to make sure that the key tasks are completed
+* incomplete tasks are archived, and will be offered as suggestion for the task for the next day
+* targetting desktop and mobile-web currently, native mobile app in future.
 
-1. **One command to get started** - Type `npm start` to start development in your default browser.
-2. **Rapid feedback** - Each time you hit save, changes hot reload and linting and automated tests run.
-3. **One command line to check** - All feedback is displayed on a single command line.
-4. **No more JavaScript fatigue** - Slingshot uses the most popular and powerful libraries for working with React.
-5. **Working example app** - The included example app shows how this all works together.
-6. **Automated production build** - Type `npm run build` to do all this:
+## More details about application
 
-[![React Slingshot Production Build](https://img.youtube.com/vi/qlfDLsX-J0U/0.jpg)](https://www.youtube.com/watch?v=qlfDLsX-J0U)
+### Application usage strategy
+
+Users are prompted every night to come up with 4 tasks that they want to accomplish tomorrow. They may key in brand new tasks, or pick from their own archive of incompleted tasks and saved future tasks (not sure if we need to split them up or put them in the same catergory)
+
+During the course of the next day, the user is free to add new tasks if necessary.
+
+At the end of the day, there will be a report that shows the user what is the task completion rate. This will be a useful reminder for users on the tasks they had forgotten about, or pushed aside due to other obligation. It can help the users to understand that they had spent their time distracted by other minor task, instead of their main tasks. Users may decide to actively say no in the day, to stay focus on their main tasks.
+
+Finally to complete the cycle, the user will be prompted to create the next 4 tasks for the next day, either completely new ones or from their previous tasks.
+
+### Incomplete tasks
+
+There should be a chao sng(temp name) meter, for how long the task have been overdue (based on created date). Can think about some implementation on how to prod the user on these overdue tasks (make the font bigger? bolded? etc)
+
+### 2 types of tasks
+
+1. immediate task
+1. future task
+
+1) immediate task is for when the user decide that there is a new task to be added for today. it should be a quite and easy input, single line with task description, shouldn need anything else. Was thinking this can be a modal screen.
+
+2) future task is for something that needs to be done in the near future, but not today. It helps to free the user from the responsibility to remember it, without losing focus for the day. It will appear as an suggestion during the end of the day report. Maybe we can add a checkbox for the add task dialog, so that default will be immediate, else intended it will become a future task.
 
 ## Get Started
 1. **Initial Machine Setup**. First time running the starter kit? Then complete the [Initial Machine Setup](https://github.com/coryhouse/react-slingshot#initial-machine-setup).
@@ -51,27 +70,3 @@ This will run the automated build process, start up a webserver, and open the ap
 4. Make sure files with names that begin with a dot (.babelrc, .editorconfig, .eslintrc) are copied to the project directory root. This is easy to overlook is you copy this repository manually.
 5. Don't run the project from a symbolic link. It may cause issues with file watches.
 6. Delete any .eslintrc that you're storing in your user directory. Also, disable any ESLint plugin / custom rules that you've enabled within your editor. These will conflict with the ESLint rules defined in this project.
-
-##Technologies
-Slingshot offers a rich development experience using the following technologies:
-
-| **Tech** | **Description** |**Learn More**|
-|----------|-------|---|
-|  [React](https://facebook.github.io/react/)  |   Fast, composable client-side components.    | [Pluralsight Course](https://www.pluralsight.com/courses/react-flux-building-applications)  |
-|  [Redux](http://redux.js.org) |  Enforces unidirectional data flows and immutable, hot reloadable store. Supports time-travel debugging. Lean alternative to [Facebook's Flux](https://facebook.github.io/flux/docs/overview.html).| [Pluralsight Course](http://www.pluralsight.com/courses/react-redux-react-router-es6)    |
-|  [React Router](https://github.com/reactjs/react-router) | A complete routing library for React | [Pluralsight Course](https://www.pluralsight.com/courses/react-flux-building-applications) |
-|  [Babel](http://babeljs.io) |  Compiles ES6 to ES5. Enjoy the new version of JavaScript today.     | [ES6 REPL](https://babeljs.io/repl/), [ES6 vs ES5](http://es6-features.org), [ES6 Katas](http://es6katas.org), [Pluralsight course](https://www.pluralsight.com/courses/javascript-fundamentals-es6)    |
-| [Webpack](http://webpack.github.io) | Bundles npm packages and our JS into a single file. Includes hot reloading via [react-transform-hmr](https://www.npmjs.com/package/react-transform-hmr). | [Quick Webpack How-to](https://github.com/petehunt/webpack-howto) [Pluralsight Course](https://www.pluralsight.com/courses/webpack-fundamentals)|
-| [Browsersync](https://www.browsersync.io/) | Lightweight development HTTP server that supports synchronized testing and debugging on multiple devices. | [Intro vid](https://www.youtube.com/watch?time_continue=1&v=heNWfzc7ufQ)|
-| [Mocha](http://mochajs.org) | Automated tests with [Chai](http://chaijs.com/) for assertions and [Enzyme](https://github.com/airbnb/enzyme) for DOM testing without a browser using Node. | [Pluralsight Course](https://www.pluralsight.com/courses/testing-javascript) |
-| [Isparta](https://github.com/douglasduteil/isparta) | Code coverage tool for ES6 code transpiled by Babel. | 
-| [TrackJS](https://trackjs.com/) | JavaScript error tracking. | [Free trial](https://my.trackjs.com/signup)|  
-| [ESLint](http://eslint.org/)| Lint JS. Reports syntax and style issues. Using [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for additional React specific linting rules. | |
-| [SASS](http://sass-lang.com/) | Compiled CSS styles with variables, functions, and more. | [Pluralsight Course](https://www.pluralsight.com/courses/better-css)|
-| [PostCSS](https://github.com/postcss/postcss) | Transform styles with JS plugins. Used to autoprefix CSS |
-| [Editor Config](http://editorconfig.org) | Enforce consistent editor settings (spaces vs tabs, etc). | [IDE Plugins](http://editorconfig.org/#download) |
-| [npm Scripts](https://docs.npmjs.com/misc/scripts)| Glues all this together in a handy automated build. | [Pluralsight course](https://www.pluralsight.com/courses/npm-build-tool-introduction), [Why not Gulp?](https://medium.com/@housecor/why-i-left-gulp-and-grunt-for-npm-scripts-3d6853dd22b8#.vtaziro8n)  |
-
-The starter kit includes a working example app that puts all of the above to use.
-## Questions?
-Check out the [FAQ](/docs/FAQ.md)
