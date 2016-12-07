@@ -1,41 +1,44 @@
 import React from 'react';
-// import { BrowserRouter, Match, Miss, Link } from 'react-router';
+import { BrowserRouter, Match, Miss, Link } from 'react-router';
+import { Menu, Dropdown, Icon } from 'antd';
+import 'antd/dist/antd.css';
 
-import Main from '../containers/Main';
+import Header from '../containers/Header';
+import HomePage from './HomePage';
+import AboutPage from './AboutPage.js';
+import NotFoundPage from './NotFoundPage.js';
+import Login from '../containers/Login';
+import Signup from '../containers/Signup';
 
-import '../styles/main.scss';
+import '../styles/main-page.scss';
 
-// ==================================================
-
-const Header = () => (
-	<div className='header'>
-		Header
-	</div>
-)
-
-const SidebarLeft = () => (
-	<div className='sidebar sidebar-left'>
-		SidebarLeft
-	</div>
-)
+// ===============================================
 
 const Footer = () => (
-	<div className='footer'>
-		Footer
+	<div style={{background:'#B3894C'}}>
+		<div className="itc-container" style={{textAlign: 'center'}} >
+			©2016 Placeholder Footer
+		</div>
 	</div>
-)
+);
 
 const App = () => (
-	<div className="wrapper">
-		<Header />
-		<div className="container main-content" >
-			{/* <SidebarLeft /> */}
-			<div style={{padding: '20px'}} >
-				<Main />
-			</div>
+	// 2. render a `Router`, it will listen to the url changes
+	//    and make the location available to other components
+	//    automatically
+	<BrowserRouter>
+		<div>
+			{/* <Header /> */}
+
+			<Match exactly pattern="/" component={HomePage} />
+			<Match pattern="/login" component={Login} />
+			<Match pattern="/signup" component={Signup} />
+
+			<Miss component={NotFoundPage}/>
+
+			<Footer />
 		</div>
-		<Footer />
-	</div>
+	</BrowserRouter>
 );
 
 export default App;

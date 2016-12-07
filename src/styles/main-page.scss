@@ -1,0 +1,32 @@
+.itc-container {
+	margin: 0 auto;
+	max-width: 1000px;
+	padding: 20px;
+}
+
+.header a {
+	font-size: 15px;
+	font-weight: 400;
+	color: white;
+}
+
+#navigation ul
+{
+    margin: 0;
+    padding: 0;
+}
+
+#navigation ul li
+{
+    list-style-type: none;
+    display: inline;
+    padding: 0 20px;
+}
+
+#navigation ul li a {
+	text-decoration: none;
+}
+
+// #navigation li:not(:first-child):before {
+//     content: " | ";
+// }

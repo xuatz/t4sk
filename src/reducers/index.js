@@ -1,12 +1,17 @@
 import { combineReducers } from 'redux';
-// import fuelSavings from './fuelSavingsReducer';
-// import dutyCalculator from './dutyCalculatorReducer';
-import placeholder from './placeholderReducer';
+import { reducer as formReducer } from 'redux-form'
+
+import fuelSavings from './fuelSavingsReducer';
+import dutyCalculator from './dutyCalculatorReducer';
+import user from './userReducer';
+// import {routerReducer} from 'react-router-redux';
 
 const rootReducer = combineReducers({
-	// fuelSavings,
-	// dutyCalculator
-	placeholder
+  fuelSavings,
+  dutyCalculator,
+  user,
+  form: formReducer
+  // routing: routerReducer
 });
 
 export default rootReducer;

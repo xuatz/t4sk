@@ -6,15 +6,20 @@ import WebpackMd5Hash from 'webpack-md5-hash';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import path from 'path';
+import config_module from 'yaml-config';
+
+// Reading configuration
+const configFile = "./config.yaml";
+const config = config_module.readConfig(configFile);
 
 const GLOBALS = {
-  'process.env.NODE_ENV': JSON.stringify('production'),
-  __DEV__: false
+  'NODE_ENV': JSON.stringify('production'),
+  'API_URL': JSON.stringify(config.API_URL)
 };
 
 export default {
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json']
+    extensions: ['', '.js', '.jsx']
   },
   debug: true,
   devtool: 'source-map', // more info:https://webpack.github.io/docs/build-performance.html#sourcemaps and https://webpack.github.io/docs/configuration.html#devtool
@@ -34,7 +39,10 @@ export default {
     new webpack.optimize.OccurenceOrderPlugin(),
 
     // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
-    new webpack.DefinePlugin(GLOBALS),
+    new webpack.DefinePlugin({
+      __DEV__: false,
+      'process.env': GLOBALS
+    }),
 
     // Generate an external css file with a hash in the filename
     new ExtractTextPlugin('[name].[contenthash].css'),
@@ -75,8 +83,7 @@ export default {
       {test: /\.svg(\?v=\d+.\d+.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml&name=[name].[ext]'},
       {test: /\.(jpe?g|png|gif)$/i, loader: 'file?name=[name].[ext]'},
       {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
-      {test: /(\.css|\.scss)$/, loader: ExtractTextPlugin.extract('css?sourceMap!postcss!sass?sourceMap')},
-      {test: /\.json$/, loader: "json"}
+      {test: /(\.css|\.scss)$/, loader: ExtractTextPlugin.extract('css?sourceMap!postcss!sass?sourceMap')}
     ]
   },
   postcss: ()=> [autoprefixer]
