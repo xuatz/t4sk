@@ -1,14 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Match, Miss, Link } from 'react-router';
-import { Menu, Dropdown, Icon } from 'antd';
-import 'antd/dist/antd.css';
+
+// import { Menu, Dropdown, Icon } from 'antd';
+// import 'antd/dist/antd.css';
 
 import Header from '../containers/Header';
 import HomePage from './HomePage';
-import AboutPage from './AboutPage.js';
 import NotFoundPage from './NotFoundPage.js';
-import Login from '../containers/Login';
-import Signup from '../containers/Signup';
 
 import '../styles/main-page.scss';
 
@@ -31,12 +29,10 @@ const App = () => (
 			{/* <Header /> */}
 
 			<Match exactly pattern="/" component={HomePage} />
-			<Match pattern="/login" component={Login} />
-			<Match pattern="/signup" component={Signup} />
 
 			<Miss component={NotFoundPage}/>
 
-			<Footer />
+		{/* <Footer /> */}
 		</div>
 	</BrowserRouter>
 );

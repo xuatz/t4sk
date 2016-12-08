@@ -2,17 +2,17 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import path from 'path';
-import config_module from 'yaml-config';
 
+// import config_module from 'yaml-config';
 // Reading configuration
-const configFile = "./config.yaml";
-const config = config_module.readConfig(configFile);
+// const configFile = "./config.yaml";
+// const config = config_module.readConfig(configFile);
 
 // console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 // console.log('process.env.API_URL', process.env.API_URL);
 const GLOBALS = {
 	'NODE_ENV': JSON.stringify('development'), // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)
-	'API_URL': JSON.stringify(config.API_URL),
+	// 'API_URL': JSON.stringify(config.API_URL),
 }
 
 export default {

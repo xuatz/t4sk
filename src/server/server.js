@@ -1,10 +1,13 @@
+//does not overwrite if process.env.<var> already exist
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const session = require('express-session');
-// const RedisStore = require('connect-redis')(session);
-const MongoStore = require('connect-mongo')(session);
+const RedisStore = require('connect-redis')(session);
+// const MongoStore = require('connect-mongo')(session);
 
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -15,7 +18,6 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 // const postmark = require('postmark')('420ed311-edc7-4de5-9ab0-cee6caccf26e'); //TODO:xz: perhaps we can put this in the config.yaml
 
 const Promise = require('bluebird');
-const mongoose = require('mongoose');
 
 const _ = require('lodash');
 
@@ -28,64 +30,7 @@ const _ = require('lodash');
 
 // ===========================================================
 
-const config_module = require('yaml-config')
-const configFile = "./config.yaml";
-const config = config_module.readConfig(configFile);
-
 const util = require('../utils/util');
-
-//=============================================================
-//=== setup mongoose with mongo database
-//=============================================================
-
-mongoose.Promise = Promise;
-
-let dbConnectionString = 'mongodb://' + config.db.host + '/' + config.db.name;
-// if (config.db.host) {
-// 	dbConnectionString += config.db.host;
-// }
-// if (config.db.port) {
-// 	dbConnectionString += ":" + config.db.port;
-// }
-// dbConnectionString += "/" + config.db.name;
-
-let options = { 
-	server: { 
-		auto_reconnect: true, 
-		socketOptions: { 
-			keepAlive: 100, 
-			connectTimeoutMS: 5000, 
-			socketTimeoutMS: 30000
-		}
-	}
-};
-
-// if (config.db.user) {
-// 	options = Object.assign(options, {
-// 		user: config.db.user,
-// 		pass: config.db.pass
-// 	});
-// }
-
-mongoose.connection.on('error', function(error) {
-	console.log('mongoose err', error);
-});
-mongoose.connection.on('connected', function() {
-    console.log('Connection established to MongoDB');
-});
-mongoose.connection.on('reconnected', function() {
-    console.log('Reconnected to MongoDB');
-});
-
-// Close the Mongoose connection, when receiving SIGINT
-process.on('SIGINT', function() {
-	mongoose.connection.close(function () {
-		console.log('Force to close the MongoDB conection');
-		process.exit(0);
-    });
-});
-
-mongoose.connect(dbConnectionString, options);
 
 //=============================================================
 //=== declaring passport strategies
@@ -143,8 +88,8 @@ passport.use(new LocalStrategy({
 }));
 
 passport.use(new GoogleStrategy({
-	clientID: config.GOOGLE_CLIENT_ID,
-	clientSecret: config.GOOGLE_CLIENT_SECRET,
+	clientID: process.env.GOOGLE_CLIENT_ID,
+	clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 	callbackURL: "/auth/google/callback"
 }, (accessToken, refreshToken, profile, cb) => {
 	console.log('profile', profile);
@@ -207,10 +152,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //make sure to have a working session store
 app.use(session({
-	// store: new RedisStore({}),
-	store: new MongoStore({
-		mongooseConnection: mongoose.connection
-	}), 
+	store: new RedisStore({}),
 	secret: 'asdf33g4w4hghjkuil8saef345',
 	proxy: true,
 	resave: true,
