@@ -9,9 +9,20 @@ import {connect} from 'react-redux';
 // import * as actions from '../actions/dutyCalculatorActions';
 // import '../styles/dutycal.scss';
 
+import { Checkbox } from 'antd';
+
+function onChange(e) {
+  console.log(`checked = ${e.target.checked}`);
+}
+
+ReactDOM.render(
+  
+, mountNode);
+
+
 const mapStateToProps = (state) => {
 	return {
-		tasks: state.tasks.tasks || []
+		tasks: state.tasks || []
 	}
 };
 
@@ -34,8 +45,15 @@ export class TaskList extends React.Component {
 	render() {
 		return (
 			<ul>
-				<li>Sample 1</li>
-				<li>Sample 2</li>
+				{this.props.tasks.map((item, index) => (
+					<li key={index}>
+						<Checkbox 
+							checked={item.isComplete}
+							onChange={onChange}>
+							{item.title}
+						</Checkbox>
+					</li>
+				))}
 			</ul>
 		);
 	}

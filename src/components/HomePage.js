@@ -1,6 +1,6 @@
 import React from 'react'
 
-import DemoForm from './DemoForm'
+import DemoForm from '../containers/DemoForm'
 import TaskList from '../containers/TaskList'
 
 const HomePage = () => {

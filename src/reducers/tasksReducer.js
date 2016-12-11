@@ -1,11 +1,12 @@
 // import _ from 'lodash';
 
-const initialState = {
-	tasks: []
-};
-
-export default function tasksReducer(state = initialState, action) {
+export default function tasksReducer(state = [], action) {
 	switch (action.type) {
+		case 'ADD_TASK':
+			return state.concat({
+				title: action.title,
+				isComplete: false
+			});
 		default:
 			return state;
 	}
