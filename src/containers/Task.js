@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {connect} from 'react-redux';
 // import {bindActionCreators} from 'redux';
@@ -9,23 +10,32 @@ import {connect} from 'react-redux';
 // import * as actions from '../actions/dutyCalculatorActions';
 // import '../styles/dutycal.scss';
 
-import Task from '../containers/Task'
+import { Checkbox } from 'antd';
 
 function onChange(e) {
   console.log(`checked = ${e.target.checked}`);
 }
 
 const mapStateToProps = (state) => {
-	return {
-		tasks: state.tasks || []
-	}
+	// return {
+		
+	// }
 };
 
 const mapDispatchToProps = (dispatch) => ({
+	toggleTask: () => {
+
+	}
 	// actions: bindActionCreators(actions, dispatch)
 });
 
-export class TaskList extends React.Component {
+const styles = {
+	taskComplete: {
+		 textDecoration: 'line-through'
+	}
+}
+
+export class Task extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -37,15 +47,23 @@ export class TaskList extends React.Component {
 		//hydrate component here if needed, will trigger re-render here
 	}
 
+	handleToggleTask = (e, a, b, c) => {
+		console.log(e.target.checked);
+	}
+
 	render() {
+		let { isComplete, title } = this.props;
+
 		return (
-			<ul>
-				{this.props.tasks.map((item, index) => (
-					<li key={index}>
-						<Task {...item} />
-					</li>
-				))}
-			</ul>
+			<Checkbox 
+				checked={isComplete || false}
+				// onChange={handleToggleTask}
+				onChange={this.handleToggleTask}
+			>
+				<span style={isComplete ? styles.taskComplete : null} >
+					{title}
+				</span>
+			</Checkbox>
 		);
 	}
 }
@@ -53,4 +71,4 @@ export class TaskList extends React.Component {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(TaskList);
+)(Task);
