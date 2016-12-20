@@ -1,6 +1,6 @@
 import React from 'react'
 
-import DemoForm from '../containers/DemoForm'
+import TaskCreate from '../containers/TaskCreate'
 import TaskList from '../containers/TaskList'
 
 const HomePage = () => {
@@ -11,7 +11,7 @@ const HomePage = () => {
 					// background:'red'
 				}}>
 				<div style={{maxwidth: '100%', textAlign: 'center'}} >
-					<DemoForm />
+					<TaskCreate />
 					<TaskList />
 				</div>
 			</div>

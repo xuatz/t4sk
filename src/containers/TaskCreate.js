@@ -18,11 +18,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const addTask = (values) => {
 	return (dispatch) => {
-		console.log('addTask()');
-		console.log('values', values);
-
 		let { title } = values;
-
 		dispatch({
 			type: 'ADD_TASK',
 			title
@@ -30,19 +26,20 @@ const addTask = (values) => {
 	}
 }
 
-export class DemoForm extends React.Component {
+export class TaskCreate extends React.Component {
 	constructor(props) {
 		super(props);
-		this.doSubmit = this.doSubmit.bind(this);
 	}
 
 	componentDidMount() {
 		//hydrate component here if needed, will trigger re-render here
 	}
 
-	doSubmit(values) {
-		console.log('doSubmit')
-		this.props.addTask(values);
+	doSubmit = (values) => {
+		if (values.title) {
+			this.props.addTask(values);
+			this.props.reset();
+		}
 	}
 
 	render() {
@@ -64,10 +61,9 @@ export class DemoForm extends React.Component {
 	}
 }
 
-DemoForm = reduxForm({ form: 'demoForm' })(DemoForm)
+TaskCreate = reduxForm({ form: 'TaskCreate' })(TaskCreate)
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(DemoForm);
-
+)(TaskCreate);
