@@ -48,9 +48,9 @@ export class TaskCreate extends React.Component {
 				<Field name="title" component="input"
 					type="text" placeholder="buy milk after work"
 					style={{
-						minWidth:'280px',
+						minWidth:'200px',
 						width: '60%'
-				}} />
+					}} />
 				<button type="submit" style={{
 					margin: '0px 10px'
 				}}>

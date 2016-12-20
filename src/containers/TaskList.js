@@ -39,13 +39,18 @@ export class TaskList extends React.Component {
 
 	render() {
 		return (
-			<ul>
-				{this.props.tasks.map((item, index) => (
-					<li key={index}>
-						<Task {...item} />
-					</li>
-				))}
-			</ul>
+			<div style={{
+				// textAlign:'left'
+			}} >
+				<ul>
+					{this.props.tasks.map((item, index) => (
+						<li key={index}>
+							<Task {...item} />
+						</li>
+					))}
+				</ul>
+			</div>
+			
 		);
 	}
 }

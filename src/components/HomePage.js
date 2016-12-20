@@ -10,7 +10,7 @@ const HomePage = () => {
 				style={{
 					// background:'red'
 				}}>
-				<div style={{maxwidth: '100%', textAlign: 'center'}} >
+				<div>
 					<TaskCreate />
 					<TaskList />
 				</div>
