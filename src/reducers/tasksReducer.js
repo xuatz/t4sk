@@ -9,6 +9,16 @@ const taskReducer = (state = {}, action) => {
 				...state,
 				isComplete: !state.isComplete
 			}
+		case 'TASK_CLEAR_PARENT_TASK':
+			return {
+				...state,
+				parentId: null
+			}
+		case 'TASK_SET_PARENT_TASK':
+			return {
+				...state,
+				parentId: action.parentId
+			}
 		default:
 			return state;
 	}
@@ -16,6 +26,10 @@ const taskReducer = (state = {}, action) => {
 
 export default function tasksReducer(state = [], action) {
 	switch (action.type) {
+		case 'TASK_CLEAR_PARENT_TASK':
+			//fall thru
+		case 'TASK_SET_PARENT_TASK':
+			//fall thru
 		case 'TASK_TOGGLE_STATUS':
 			return state.map(item => {
 				if (item.id === action.id) {
@@ -28,6 +42,7 @@ export default function tasksReducer(state = [], action) {
 				id: uuid(),
 				title: action.title,
 				isComplete: false,
+				parentId: null,
 				createdAt: new Date(),
 				createdBy: null
 			});
