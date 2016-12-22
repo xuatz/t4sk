@@ -45,7 +45,7 @@ export class TaskList extends React.Component {
 				<ul>
 					{this.props.tasks.map((item, index) => (
 						<li key={index}>
-							<Task {...item} />
+							<Task task={item} />
 						</li>
 					))}
 				</ul>

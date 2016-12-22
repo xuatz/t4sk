@@ -4,6 +4,11 @@ import uuid from 'uuid/v4'
 
 const taskReducer = (state = {}, action) => {
 	switch (action.type) {
+		case 'TASK_UPDATE_DETAILS':
+			return {
+				...state,
+				...action.values
+			}
 		case 'TASK_TOGGLE_STATUS':
 			return {
 				...state,
@@ -26,6 +31,8 @@ const taskReducer = (state = {}, action) => {
 
 export default function tasksReducer(state = [], action) {
 	switch (action.type) {
+		case 'TASK_UPDATE_DETAILS':
+			//fall thru
 		case 'TASK_CLEAR_PARENT_TASK':
 			//fall thru
 		case 'TASK_SET_PARENT_TASK':
@@ -44,7 +51,8 @@ export default function tasksReducer(state = [], action) {
 				isComplete: false,
 				parentId: null,
 				createdAt: new Date(),
-				createdBy: null
+				createdBy: null,
+				description: Math.random()
 			});
 		default:
 			return state;
