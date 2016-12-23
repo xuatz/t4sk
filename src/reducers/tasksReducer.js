@@ -32,11 +32,11 @@ const taskReducer = (state = {}, action) => {
 export default function tasksReducer(state = [], action) {
 	switch (action.type) {
 		case 'TASK_UPDATE_DETAILS':
-			//fall thru
+			// falls through
 		case 'TASK_CLEAR_PARENT_TASK':
-			//fall thru
+			// falls through
 		case 'TASK_SET_PARENT_TASK':
-			//fall thru
+			// falls through
 		case 'TASK_TOGGLE_STATUS':
 			return state.map(item => {
 				if (item.id === action.id) {

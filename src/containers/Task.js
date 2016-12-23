@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+// import {bindActionCreators} from 'redux';
 // import { Form, Dropdown, Button, Grid, Card, Message } from 'semantic-ui-react';
 // import _ from 'lodash';
 
@@ -10,7 +10,7 @@ import {bindActionCreators} from 'redux';
 // import '../styles/dutycal.scss';
 
 import { Modal, Checkbox, Button } from 'antd'
-import { reduxForm, Field, reset } from 'redux-form'
+import { reset } from 'redux-form'
 
 import CustomInput2 from '../components/CustomInput2'
 import CustomInput3 from '../components/CustomInput3'
@@ -96,7 +96,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const styles = {
 	taskComplete: {
-		 textDecoration: 'line-through'
+		textDecoration: 'line-through'
 	}
 }
 
@@ -109,12 +109,12 @@ export class Task extends React.Component {
 		//hydrate component here if needed, will trigger re-render here
 	}
 
-	handleToggleTask = (event) => {
+	handleToggleTask = () => {
 		// console.log(event)
-		this.props.toggleTask(this.props.id)
+		this.props.toggleTask(this.props.task.id)
 	}
 
-	showModal = (event) => {
+	showModal = () => {
 		this.setState({
 			...this.state,
 			isModalVisible: true

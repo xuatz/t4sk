@@ -2,11 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 
-const mapStateToProps = (state) => {
-	return {
+// const mapStateToProps = (state) => {
+// 	return {
 
-	}
-};
+// 	}
+// };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
@@ -27,10 +27,6 @@ const addTask = (values) => {
 }
 
 export class TaskCreate extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	componentDidMount() {
 		//hydrate component here if needed, will trigger re-render here
 	}
@@ -61,9 +57,7 @@ export class TaskCreate extends React.Component {
 	}
 }
 
-TaskCreate = reduxForm({ form: 'TaskCreate' })(TaskCreate)
-
 export default connect(
-	mapStateToProps,
+	null, //mapStateToProps,
 	mapDispatchToProps
-)(TaskCreate);
+)(reduxForm({ form: 'TaskCreate' })(TaskCreate));

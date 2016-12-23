@@ -18,10 +18,10 @@ const UserAccountsSchema = new Schema({
 }, {
 	timestamps: true
 });
-const UserAccounts = mongoose.model('UserAccounts', UserAccountsSchema)
+// const UserAccounts = mongoose.model('UserAccounts', UserAccountsSchema)
 
 const UserSchema = new Schema({
-	  accounts: [UserAccountsSchema]
+	accounts: [UserAccountsSchema]
 	, email: { type: String }
 	, password: { type: String }
 	, country: { type: String }

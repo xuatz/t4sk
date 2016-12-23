@@ -11,9 +11,9 @@ import {connect} from 'react-redux';
 
 import Task from '../containers/Task'
 
-function onChange(e) {
-  console.log(`checked = ${e.target.checked}`);
-}
+// function onChange(e) {
+//   console.log(`checked = ${e.target.checked}`);
+// }
 
 const mapStateToProps = (state) => {
 	return {
@@ -21,9 +21,9 @@ const mapStateToProps = (state) => {
 	}
 };
 
-const mapDispatchToProps = (dispatch) => ({
-	// actions: bindActionCreators(actions, dispatch)
-});
+// const mapDispatchToProps = (dispatch) => ({
+// 	// actions: bindActionCreators(actions, dispatch)
+// });
 
 export class TaskList extends React.Component {
 	constructor(props) {
@@ -56,6 +56,6 @@ export class TaskList extends React.Component {
 }
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+	mapStateToProps
+	// , mapDispatchToProps
 )(TaskList);
