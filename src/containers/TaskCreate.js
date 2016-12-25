@@ -2,6 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 
+import { 
+	addTask
+} from '../actions/taskActions'
+
 // const mapStateToProps = (state) => {
 // 	return {
 
@@ -12,17 +16,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		addTask: (values) => {
 			dispatch(addTask(values))
-		}
-	}
-}
-
-const addTask = (values) => {
-	return (dispatch) => {
-		let { title } = values;
-		dispatch({
-			type: 'ADD_TASK',
-			title
-		})
+		},
 	}
 }
 

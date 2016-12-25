@@ -1,6 +1,9 @@
 // import _ from 'lodash';
 
-import uuid from 'uuid/v4'
+import {
+	TASK_ADD_NEW,
+	TASK_FETCH_ALL
+} from '../actions/taskActions'
 
 const taskReducer = (state = {}, action) => {
 	switch (action.type) {
@@ -44,16 +47,10 @@ export default function tasksReducer(state = [], action) {
 				}
 				return item;
 			})
-		case 'ADD_TASK':
-			return state.concat({
-				id: uuid(),
-				title: action.title,
-				isComplete: false,
-				parentId: null,
-				createdAt: new Date(),
-				createdBy: null,
-				description: Math.random()
-			});
+		case TASK_ADD_NEW:
+			return state.concat(action.task);
+		case TASK_FETCH_ALL:
+			return action.tasks || state;
 		default:
 			return state;
 	}
