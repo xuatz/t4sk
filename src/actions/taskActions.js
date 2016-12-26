@@ -9,20 +9,25 @@ export const TASK_FETCH_ALL = 'TASK_FETCH_ALL'
 const db = new PouchDB('tasks');
 // const remoteDB = new PouchDB('http://localhost:5984/myremotedb')
 // const remoteDB = new PouchDB('http://whateverwhateverwhatever.mooo.com:5984/tasks')
-const remoteDB = new PouchDB('ec2-35-166-214-108.us-west-2.compute.amazonaws.com:5984/tasks')
+const remoteDB = new PouchDB('http://ec2-35-166-214-108.us-west-2.compute.amazonaws.com:5984/tasks')
 
-db.replicate.to(remoteDB, {
+db.sync(remoteDB, {
 	live: true,
 	retry: true
 }).on('change', function (change) {
-  // yo, something changed!
+	console.log('yo, something changed!')
 }).on('paused', function (info) {
-  // replication was paused, usually because of a lost connection
+	console.log('replication was paused, usually because of a lost connection')
+	console.log(info);
 }).on('active', function (info) {
-  // replication was resumed
+	console.log('replication was resumed')
 }).on('error', function (err) {
-  // totally unhandled error (shouldn't happen)
+	console.log('totally unhandled error (shouldnt happen)')
 });
+
+db.info().then(function (info) {
+	console.log(info);
+})
 
 export const addTask = (values) => {
 	console.log('addTask()');
@@ -57,15 +62,19 @@ export const addTask = (values) => {
 }
 
 export const fetchTasks = () => {
+	console.log('action creators: fetchTasks()')
 	return (dispatch) => {
-		db.getDocs({
+		db.allDocs({
 			include_docs: true
 		})
-		.then(tasks => {
-			if (tasks) {
+		.then(res => {
+			console.log(res);
+			if (res.rows) {
 				dispatch({
 					type: TASK_FETCH_ALL,
-					tasks
+					tasks: res.rows.map(item => {
+						return item.doc
+					})
 				})
 				return true;
 			}

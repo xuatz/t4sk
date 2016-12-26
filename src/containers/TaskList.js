@@ -28,7 +28,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		fetchTasks: () => {
-			dispatch(fetchTasks)
+			dispatch(fetchTasks())
 		}
 	}
 };
@@ -52,11 +52,13 @@ export class TaskList extends React.Component {
 				// textAlign:'left'
 			}} >
 				<ul>
-					{this.props.tasks.map((item, index) => (
-						<li key={index}>
-							<Task task={item} />
-						</li>
-					))}
+					{this.props.tasks ? (
+						this.props.tasks.map((item, index) => (
+							<li key={index}>
+								<Task task={item} />
+							</li>	
+						))
+					) : null }
 				</ul>
 			</div>
 			
