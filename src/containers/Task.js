@@ -149,7 +149,7 @@ export class Task extends React.Component {
 
 	handleFieldOnChange = (values) => {
 		console.log('handleFieldOnChange()')
-		this.props.updateTask(this.props.task.id, values)
+		this.props.updateTask(this.props.task._id, values)
 	}
 
 	render() {

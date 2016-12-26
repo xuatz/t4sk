@@ -42,7 +42,7 @@ export default function tasksReducer(state = [], action) {
 			// falls through
 		case 'TASK_TOGGLE_STATUS':
 			return state.map(item => {
-				if (item.id === action.id) {
+				if (item._id === action.id) {
 					return taskReducer(item, action);
 				}
 				return item;

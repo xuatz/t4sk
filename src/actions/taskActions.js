@@ -8,7 +8,8 @@ export const TASK_FETCH_ALL = 'TASK_FETCH_ALL'
 
 const db = new PouchDB('tasks');
 // const remoteDB = new PouchDB('http://localhost:5984/myremotedb')
-const remoteDB = new PouchDB('http://whateverwhateverwhatever.mooo.com:5984/tasks')
+// const remoteDB = new PouchDB('http://whateverwhateverwhatever.mooo.com:5984/tasks')
+const remoteDB = new PouchDB('ec2-35-166-214-108.us-west-2.compute.amazonaws.com:5984/tasks')
 
 db.replicate.to(remoteDB, {
 	live: true,
@@ -24,6 +25,7 @@ db.replicate.to(remoteDB, {
 });
 
 export const addTask = (values) => {
+	console.log('addTask()');
 	return (dispatch) => {
 		let { title } = values;
 		let _id = uuid();
