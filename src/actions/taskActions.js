@@ -1,14 +1,14 @@
 import PouchDB from 'pouchdb'
 import uuid from 'uuid/v4'
 
+// ======================
+
 export const TASK_ADD_NEW = 'TASK_ADD_NEW'
 export const TASK_FETCH_ALL = 'TASK_FETCH_ALL'
 
 // ======================
 
 const db = new PouchDB('tasks');
-// const remoteDB = new PouchDB('http://localhost:5984/myremotedb')
-// const remoteDB = new PouchDB('http://whateverwhateverwhatever.mooo.com:5984/tasks')
 const remoteDB = new PouchDB('http://ec2-35-166-214-108.us-west-2.compute.amazonaws.com:5984/tasks')
 
 db.sync(remoteDB, {
@@ -18,7 +18,6 @@ db.sync(remoteDB, {
 	console.log('yo, something changed!')
 }).on('paused', function (info) {
 	console.log('replication was paused, usually because of a lost connection')
-	console.log(info);
 }).on('active', function (info) {
 	console.log('replication was resumed')
 }).on('error', function (err) {
@@ -28,6 +27,8 @@ db.sync(remoteDB, {
 db.info().then(function (info) {
 	console.log(info);
 })
+
+console.log(db.adapter); 
 
 export const addTask = (values) => {
 	console.log('addTask()');

@@ -6,7 +6,7 @@ abbrev@1, abbrev@1.0.x:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.0.9.tgz#91b4792588a7738c25f35dd6f63752a2f8776135"
 
-abstract-leveldown@~2.4.0:
+abstract-leveldown@2.4.1, abstract-leveldown@~2.4.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/abstract-leveldown/-/abstract-leveldown-2.4.1.tgz#b3bfedb884eb693a12775f0c55e9f0a420ccee64"
   dependencies:
@@ -1939,13 +1939,13 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-debug@2.2.0, debug@^2.1.1, debug@^2.2.0, debug@~2.2.0:
+debug@2.2.0, debug@^2.2.0, debug@~2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
   dependencies:
     ms "0.7.1"
 
-debug@2.3.2:
+debug@2.3.2, debug@^2.1.1:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.3.2.tgz#94cb466ef7d6d2c7e5245cdd6e4104f2d0d70d30"
   dependencies:
@@ -2186,13 +2186,13 @@ encoding@^0.1.11:
   dependencies:
     iconv-lite "~0.4.13"
 
-end-of-stream@1.0.0, end-of-stream@^1.0.0:
+end-of-stream@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.0.0.tgz#d4596e702734a93e40e9af864319eabd99ff2f0e"
   dependencies:
     once "~1.3.0"
 
-end-of-stream@^1.1.0:
+end-of-stream@^1.0.0, end-of-stream@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.1.0.tgz#e9353258baa9108965efc41cb0ef8ade2f3cfb07"
   dependencies:
@@ -2885,6 +2885,10 @@ function.prototype.name@^1.0.0:
     define-properties "^1.1.2"
     function-bind "^1.1.0"
     is-callable "^1.1.2"
+
+functional-red-black-tree@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
 
 gauge@~1.2.5:
   version "1.2.7"
@@ -4190,6 +4194,10 @@ ltgt@2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/ltgt/-/ltgt-2.1.2.tgz#e7472324fee690afc0d5ecf900403ce5788a311d"
 
+ltgt@~1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ltgt/-/ltgt-1.0.2.tgz#e6817eb29ad204fc0c9e96ef8b0fee98ef6b9aa3"
+
 macaddress@^0.2.8:
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/macaddress/-/macaddress-0.2.8.tgz#5904dc537c39ec6dbefeae902327135fa8511f12"
@@ -4225,6 +4233,15 @@ md5@^2.0.0:
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
+
+memdown@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/memdown/-/memdown-1.2.2.tgz#51034b03728fa527b9bc8990b068020fb9b4828e"
+  dependencies:
+    abstract-leveldown "2.4.1"
+    functional-red-black-tree "^1.0.1"
+    inherits "~2.0.1"
+    ltgt "~1.0.2"
 
 memory-fs@^0.2.0:
   version "0.2.0"
@@ -5343,6 +5360,97 @@ postmark@^1.2.1:
     git-rev "0.2.1"
     merge "1.2.0"
 
+pouchdb-adapter-leveldb-core@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/pouchdb-adapter-leveldb-core/-/pouchdb-adapter-leveldb-core-6.1.0.tgz#547992892614b8d8b8184e2a8becf3415f64b079"
+  dependencies:
+    argsarray "0.0.1"
+    buffer-from "0.1.1"
+    double-ended-queue "2.1.0-0"
+    levelup "1.3.3"
+    pouchdb-adapter-utils "6.1.0"
+    pouchdb-binary-utils "6.1.0"
+    pouchdb-collections "6.1.0"
+    pouchdb-errors "6.1.0"
+    pouchdb-json "6.1.0"
+    pouchdb-md5 "6.1.0"
+    pouchdb-merge "6.1.0"
+    pouchdb-promise "6.1.0"
+    pouchdb-utils "6.1.0"
+    sublevel-pouchdb "6.1.0"
+    through2 "2.0.1"
+
+pouchdb-adapter-memory@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/pouchdb-adapter-memory/-/pouchdb-adapter-memory-6.1.0.tgz#7de7d86167fbcc89c053d9f4513f20ec6609df42"
+  dependencies:
+    memdown "1.2.2"
+    pouchdb-adapter-leveldb-core "6.1.0"
+    pouchdb-utils "6.1.0"
+
+pouchdb-adapter-utils@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/pouchdb-adapter-utils/-/pouchdb-adapter-utils-6.1.0.tgz#e22fc5c91654c5c78cbf02ad45e50377a4435a27"
+  dependencies:
+    pouchdb-binary-utils "6.1.0"
+    pouchdb-collections "6.1.0"
+    pouchdb-errors "6.1.0"
+    pouchdb-md5 "6.1.0"
+    pouchdb-merge "6.1.0"
+    pouchdb-utils "6.1.0"
+
+pouchdb-binary-utils@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/pouchdb-binary-utils/-/pouchdb-binary-utils-6.1.0.tgz#a476276c439da28ccc920ab062b4320d6d45d551"
+  dependencies:
+    buffer-from "0.1.1"
+
+pouchdb-collections@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/pouchdb-collections/-/pouchdb-collections-6.1.0.tgz#5cb0c03bfd8702fe112c7c25b7179eeee1deed19"
+
+pouchdb-errors@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/pouchdb-errors/-/pouchdb-errors-6.1.0.tgz#e03a42a8baba9cfb80f00fccc54306d0c4c07b1b"
+  dependencies:
+    inherits "2.0.3"
+
+pouchdb-json@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/pouchdb-json/-/pouchdb-json-6.1.0.tgz#b77f238d454f0ceee74a9b04f5fcbff0eb981ec8"
+  dependencies:
+    vuvuzela "1.0.3"
+
+pouchdb-md5@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/pouchdb-md5/-/pouchdb-md5-6.1.0.tgz#5a65b49613a4f79e9ac0a8956d94c911076f0fe6"
+  dependencies:
+    pouchdb-binary-utils "6.1.0"
+    spark-md5 "3.0.0"
+
+pouchdb-merge@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/pouchdb-merge/-/pouchdb-merge-6.1.0.tgz#19014050037e8ead4b1439a7d34b0d74cb2ed5fa"
+
+pouchdb-promise@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/pouchdb-promise/-/pouchdb-promise-6.1.0.tgz#8ba26bfc4e245499072181c4f50373629906dfa2"
+  dependencies:
+    lie "3.1.0"
+
+pouchdb-utils@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/pouchdb-utils/-/pouchdb-utils-6.1.0.tgz#86db760a56393324efa94c2e69065d37305e7c5c"
+  dependencies:
+    argsarray "0.0.1"
+    clone-buffer "1.0.0"
+    debug "2.3.2"
+    immediate "3.0.6"
+    inherits "2.0.3"
+    pouchdb-collections "6.1.0"
+    pouchdb-errors "6.1.0"
+    pouchdb-promise "6.1.0"
+
 pouchdb@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/pouchdb/-/pouchdb-6.1.0.tgz#bc79a39a7e8cf1a91e4252c4821ce036b795de80"
@@ -5962,16 +6070,7 @@ read@1.0.x:
   dependencies:
     mute-stream "~0.0.4"
 
-readable-stream@1.0, "readable-stream@>=1.0.33-1 <1.1.0-0", readable-stream@^1.0.33:
-  version "1.0.34"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.0.34.tgz#125820e34bc842d2f2aaafafe4c2916ee32c157c"
-  dependencies:
-    core-util-is "~1.0.0"
-    inherits "~2.0.1"
-    isarray "0.0.1"
-    string_decoder "~0.10.x"
-
-readable-stream@1.0.33:
+readable-stream@1.0, readable-stream@1.0.33, "readable-stream@>=1.0.33-1 <1.1.0-0", readable-stream@^1.0.33:
   version "1.0.33"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.0.33.tgz#3a360dd66c1b1d7fd4705389860eda1d0f61126c"
   dependencies:
@@ -6230,7 +6329,7 @@ replace@0.3.0:
     minimatch "~0.2.9"
     nomnom "1.6.x"
 
-request@2, request@2.78.0:
+request@2, request@2.78.0, request@^2.61.0:
   version "2.78.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.78.0.tgz#e1c8dec346e1c81923b24acdb337f11decabe9cc"
   dependencies:
@@ -6255,7 +6354,7 @@ request@2, request@2.78.0:
     tough-cookie "~2.3.0"
     tunnel-agent "~0.4.1"
 
-request@2.75.0, request@^2.61.0:
+request@2.75.0:
   version "2.75.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.75.0.tgz#d2b8268a286da13eaa5d01adf5d18cc90f657d93"
   dependencies:
@@ -6438,13 +6537,13 @@ semver-diff@^2.0.0:
   dependencies:
     semver "^5.0.3"
 
-"semver@2 || 3 || 4 || 5", "semver@2.x || 3.x || 4 || 5", semver@^5.0.3, semver@^5.1.0, semver@~5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
-
-semver@~5.1.0:
+"semver@2 || 3 || 4 || 5", "semver@2.x || 3.x || 4 || 5", semver@^5.0.3, semver@^5.1.0, semver@~5.1.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.1.1.tgz#a3292a373e6f3e0798da0b20641b9a9c5bc47e19"
+
+semver@~5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
 
 send@0.14.1:
   version "0.14.1"
@@ -6842,6 +6941,15 @@ style-loader@0.13.1:
   resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.13.1.tgz#468280efbc0473023cd3a6cd56e33b5a1d7fc3a9"
   dependencies:
     loader-utils "^0.2.7"
+
+sublevel-pouchdb@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/sublevel-pouchdb/-/sublevel-pouchdb-6.1.0.tgz#640943e6a051b7c79f6531f0b60a6f13427ba318"
+  dependencies:
+    inherits "2.0.3"
+    level-codec "6.2.0"
+    ltgt "2.1.2"
+    readable-stream "1.0.33"
 
 supports-color@3.1.2, supports-color@^3.1.0, supports-color@^3.1.2:
   version "3.1.2"
