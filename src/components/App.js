@@ -9,6 +9,8 @@ import { BrowserRouter, Match, Miss,
 // import Header from '../containers/Header';
 import HomePage from './HomePage';
 import NotFoundPage from './NotFoundPage.js';
+import Sample from './Sample'
+
 
 import '../styles/main-page.scss';
 
@@ -30,11 +32,18 @@ const App = () => (
 		<div>
 			{/* <Header /> */}
 
-			<Match exactly pattern="/" component={HomePage} />
+			<div className="itc-container"
+				style={{
+					// background:'red'
+				}}>
+				<Match exactly pattern="/" component={HomePage} />
 
-			<Miss component={NotFoundPage}/>
+				<Match exactly pattern="/sample" component={Sample} />
 
-		{/* <Footer /> */}
+				<Miss component={NotFoundPage}/>
+			</div>
+			
+			{/* <Footer /> */}
 		</div>
 	</BrowserRouter>
 );
