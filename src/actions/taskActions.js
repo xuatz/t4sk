@@ -3,8 +3,9 @@ import uuid from 'uuid/v4'
 
 // ======================
 
-export const TASK_ADD_NEW = 'TASK_ADD_NEW'
-export const TASK_FETCH_ALL = 'TASK_FETCH_ALL'
+export const TASK_ADD_NEW 		= 'TASK_ADD_NEW'
+export const TASK_DELETE 		= 'TASK_DELETE'
+export const TASK_FETCH_ALL 	= 'TASK_FETCH_ALL'
 
 // ======================
 
@@ -30,9 +31,35 @@ db.info().then(function (info) {
 
 console.log(db.adapter); 
 
+export const deleteTask = (doc) => {
+	console.log('deleteTask()');
+	console.log('hi1');
+	return (dispatch) => {
+		console.log('hi2');
+		console.log(doc)
+		
+		db.remove(doc)
+		.then((res) => {
+			console.log('hi3');
+			console.log(res)
+			console.log('successfully deleted, i think')
+			dispatch({
+				type: TASK_DELETE,
+				_id: doc._id
+			})
+		})
+		.catch(err => {
+			console.log('hi4');
+			console.log(err);
+		})
+	}
+}
+
 export const addTask = (values) => {
 	console.log('addTask()');
+	console.log('hi21');
 	return (dispatch) => {
+		console.log('hi22');
 		let { title } = values;
 		let _id = uuid();
 
@@ -65,6 +92,7 @@ export const addTask = (values) => {
 export const fetchTasks = () => {
 	console.log('action creators: fetchTasks()')
 	return (dispatch) => {
+		//TODO should include some basic sorting logic here... or not?
 		db.allDocs({
 			include_docs: true
 		})

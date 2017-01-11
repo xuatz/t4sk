@@ -2,6 +2,7 @@
 
 import {
 	TASK_ADD_NEW,
+	TASK_DELETE,
 	TASK_FETCH_ALL
 } from '../actions/taskActions'
 
@@ -42,13 +43,17 @@ export default function tasksReducer(state = [], action) {
 			// falls through
 		case 'TASK_TOGGLE_STATUS':
 			return state.map(item => {
-				if (item._id === action.id) {
+				if (item._id === action._id) {
 					return taskReducer(item, action);
 				}
 				return item;
 			})
+		case 'TASK_DELETE':
+			return state.filter(item => {
+				return item._id !== action._id
+			})
 		case TASK_ADD_NEW:
-			return state.concat(action.task);
+			return [].concat(action.task).concat(state)
 		case TASK_FETCH_ALL:
 			return action.tasks || state;
 		default:

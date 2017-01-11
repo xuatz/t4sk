@@ -1,13 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-// import {bindActionCreators} from 'redux';
-// import { Form, Dropdown, Button, Grid, Card, Message } from 'semantic-ui-react';
-// import _ from 'lodash';
-
-// import ItemCard from '../components/ItemCard';
-
-// import * as actions from '../actions/dutyCalculatorActions';
-// import '../styles/dutycal.scss';
+import {bindActionCreators} from 'redux';
 
 import { Modal, Checkbox, Button } from 'antd'
 import { reset } from 'redux-form'
@@ -15,7 +8,13 @@ import { reset } from 'redux-form'
 import CustomInput2 from '../components/CustomInput2'
 import CustomInput3 from '../components/CustomInput3'
 
+import { 
+	deleteTask
+} from '../actions/taskActions'
+
 import 'antd/dist/antd.css';
+
+const confirm = Modal.confirm;
 
 // ===================================
 
@@ -32,29 +31,32 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-	toggleTask: (id) => {
+	deleteTask: (doc) => {
+		dispatch(deleteTask(doc))
+	},
+	toggleTask: (_id) => {
 		dispatch({
 			type: 'TASK_TOGGLE_STATUS',
-			id
+			_id
 		})
 	},
-	clearTaskParent: (id) => {
+	clearTaskParent: (_id) => {
 		dispatch({
 			type: 'TASK_CLEAR_PARENT_TASK',
-			id
+			_id
 		})	
 	},
-	setTaskParent: (id, parentId) => {
+	setTaskParent: (_id, parentId) => {
 		dispatch({
 			type: 'TASK_SET_PARENT_TASK',
-			id,
+			_id,
 			parentId
 		})	
 	},
-	updateTask: (id, values) => {
+	updateTask: (_id, values) => {
 		dispatch({
 			type: 'TASK_UPDATE_DETAILS',
-			id,
+			_id,
 			values
 		})	
 	},
@@ -111,7 +113,7 @@ export class Task extends React.Component {
 
 	handleToggleTask = () => {
 		// console.log(event)
-		this.props.toggleTask(this.props.task.id)
+		this.props.toggleTask(this.props.task._id)
 	}
 
 	showModal = () => {
@@ -123,7 +125,6 @@ export class Task extends React.Component {
 
 	handleOk = () => {
 		console.log('handleOk()')
-
 		this.setState({
 			...this.state,
 			isModalVisible: false
@@ -153,7 +154,8 @@ export class Task extends React.Component {
 	}
 
 	render() {
-		let { isComplete, title, id } = this.props.task;
+		let { deleteTask, task } = this.props;
+		let { isComplete, title, id } = task;
 
 		return (
 			<div style={{padding: '5px 0px'}} >
@@ -204,6 +206,19 @@ export class Task extends React.Component {
 					</Modal>
 
 				</Button>
+
+				<Button shape="circle" icon="delete" size="small" 
+					onClick={() => {
+						confirm({
+    						title: 'Are you sure you want to delete this task?',
+    						onOk() {
+    							deleteTask(task)
+      						},
+      						onCancel() {},
+      						okText: 'Delete',
+      						cancelText: 'Cancel'
+      					});
+					}} />
 			</div>
 			
 		);
