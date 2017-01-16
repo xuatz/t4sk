@@ -37,9 +37,8 @@ const App = () => (
 					// background:'red'
 				}}>
 				<Match exactly pattern="/" component={HomePage} />
-
-				<Match exactly pattern="/sample" component={Sample} />
-
+				<Match exactly pattern="/default" component={Sample} />
+				<Match exactly pattern="/report" component={Sample} />
 				<Miss component={NotFoundPage}/>
 			</div>
 			
