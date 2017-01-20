@@ -10,7 +10,7 @@ import { BrowserRouter, Match, Miss,
 import HomePage from './HomePage';
 import NotFoundPage from './NotFoundPage.js';
 import Sample from './Sample'
-
+import Report from '../containers/Report'
 
 import '../styles/main-page.scss';
 
@@ -38,7 +38,8 @@ const App = () => (
 				}}>
 				<Match exactly pattern="/" component={HomePage} />
 				<Match exactly pattern="/default" component={Sample} />
-				<Match exactly pattern="/report" component={Sample} />
+				<Match exactly pattern="/report" component={Report} />
+				<Match exactly pattern="/report-sample" component={Sample} />
 				<Miss component={NotFoundPage}/>
 			</div>
 			

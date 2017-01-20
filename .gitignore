@@ -39,3 +39,4 @@ dist
 # Mac files
 .DS_Store
 .env
+tasks
