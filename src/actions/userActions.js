@@ -1,48 +1,80 @@
-import axios from 'axios';
-import { Redirect } from 'react-router';
-import createHistory from 'history/createBrowserHistory'
+import axios from "axios";
 
-//==============
-
-export const UPDATE_LOGIN_STATUS = 'UPDATE_LOGIN_STATUS';
-export const UPDATE_USER_LOGOUT = 'UPDATE_USER_LOGOUT';
-
-// export const ;
-// export const ;
-// export const ;
-// export const ;
-
-const api = axios.create({
-  baseURL: 'http://localhost:3030/',
-  timeout: 1000,
-  withCredentials: true
+let API = axios.create({
+    baseURL: process.env.REACT_APP_API_URL || "http://localhost:9000",
+    withCredentials: true,
+    timeout: 5000
 });
 
-export const logout = () => {
-	return (dispatch) => {
-		api.get('/logout')
-		.then(res => {
-			if (res.status == 200) {
-				dispatch({
-					type: UPDATE_USER_LOGOUT
-				})
+export const checkUserSession = () => {
+    return dispatch => {
+        dispatch({
+            type: "USER_CHECK_SESSION"
+        });
 
-				const history = createHistory({
-					forceRefresh: true
-				});
-				history.push('/');
-			}
-		})
-		.catch(err => {
-			console.log(err);
-			throw err;
-		})
-	}
-}
+        return API.get("/auth/user")
+            .then(res => {
+                if (res.status === 200) {
+                    dispatch({ type: "USER_LOGGED_IN" });
+                } else {
+                    dispatch({ type: "USER_LOGGED_OUT" });
+                }
+            })
+            .catch(err => {
+                dispatch({ type: "USER_LOGGED_OUT" });
+            });
+    };
+};
 
-export const updateLoginStatus = (user) => {
-	return {
-		type: UPDATE_LOGIN_STATUS,
-		user
-	}
-}
+export const login = form => {
+    return dispatch => {
+        return API.post("/auth/login", {
+            ...form
+        })
+            .then(res => {
+                if (res.data && res.data.error) {
+                    return {
+                        error: res.data.error
+                    };
+                }
+
+                if (res.status === 200) {
+                    dispatch({ type: "USER_LOGGED_IN" });
+                }
+
+                return {
+                    status: res.status
+                };
+            })
+            .catch(err => {
+                throw err;
+            });
+    };
+};
+
+export const signup = form => {
+    return dispatch => {
+        return API.post("/auth/signup", {
+            ...form
+        })
+            .then(res => {
+                console.log(res);
+                if (res.data && res.data.error) {
+                    return {
+                        error: res.data.error
+                    };
+                }
+
+                if (res.status === 200) {
+                    dispatch({ type: "USER_LOGGED_IN" });
+                }
+
+                return {
+                    status: res.status
+                };
+            })
+            .catch(err => {
+                throw err;
+            });
+    };
+};

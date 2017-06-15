@@ -1,51 +1,35 @@
-import React from 'react';
-import { BrowserRouter, Match, Miss, 
-	// Link 
-} from 'react-router';
+import React, { Component } from "react";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-// import { Menu, Dropdown, Icon } from 'antd';
-// import 'antd/dist/antd.css';
+import SessionCheckModule from "../components/common/SessionCheckModule";
+import Layout from "../components/common/MyLayout";
+import MainPage from "../components/MainPage";
+import AboutPage from "../components/AboutPage";
 
-// import Header from '../containers/Header';
-import HomePage from './HomePage';
-import NotFoundPage from './NotFoundPage.js';
-import Sample from './Sample'
-import Report from '../containers/Report'
+import configureStore from "../store";
 
-import '../styles/main-page.scss';
+let store = configureStore();
 
-// ===============================================
+class App extends Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <SessionCheckModule>
+                    <Router>
+                        <Layout>
+                            <Route exact path="/" component={MainPage} />
+                            <Route path="/about" component={AboutPage} />
+                            <Route path="/about/a" component={AboutPage} />
+                            <Route path="/about/b" component={MainPage} />
+                        </Layout>
 
-// const Footer = () => (
-// 	<div style={{background:'#B3894C'}}>
-// 		<div className="itc-container" style={{textAlign: 'center'}} >
-// 			©2016 Placeholder Footer
-// 		</div>
-// 	</div>
-// );
+                    </Router>
+                </SessionCheckModule>
 
-const App = () => (
-	// 2. render a `Router`, it will listen to the url changes
-	//    and make the location available to other components
-	//    automatically
-	<BrowserRouter>
-		<div>
-			{/* <Header /> */}
-
-			<div className="itc-container"
-				style={{
-					// background:'red'
-				}}>
-				<Match exactly pattern="/" component={HomePage} />
-				<Match exactly pattern="/default" component={Sample} />
-				<Match exactly pattern="/report" component={Report} />
-				<Match exactly pattern="/report-sample" component={Sample} />
-				<Miss component={NotFoundPage}/>
-			</div>
-			
-			{/* <Footer /> */}
-		</div>
-	</BrowserRouter>
-);
+            </Provider>
+        );
+    }
+}
 
 export default App;
