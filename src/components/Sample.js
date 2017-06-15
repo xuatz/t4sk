@@ -1,4 +1,6 @@
 import React from 'react'
+import TaskCreate from '../containers/TaskCreate'
+import TaskList from '../containers/TaskList'
 import { Collapse, Icon, AutoComplete } from 'antd'
 
 let styles = {
@@ -24,10 +26,32 @@ const Sample = () => {
 
 	return (
 		<div>
-			<p>
-				*This is a mockup for a daily report screen*
-			</p>
+			<section style={{
+				// display: 'none',
+				background: 'pink',
+				padding: '15px 20px'
+			}} >
+				<TaskCreate />
+			</section>
+			<section style={{
+				// display: 'none',
+				background: 'yellow'
+			}} >
+				<div style={{
+					padding: '5px 20px',
+					...styles.flexcontainer
+				}} >
+					<div style={styles.item}>
+						<TaskList />
+					</div>
+					<div style={styles.item}>
+						Newly added tasks
+					</div>
+				</div>
+			</section>
 
+
+			
 			<section style={{
 				display: 'none',
 				background: 'red'
@@ -54,6 +78,7 @@ const Sample = () => {
 				</div>
 			</section>
 			<section style={{
+				display: 'none',
 				background: 'orange'
 			}} >
 				<div style={{
@@ -90,6 +115,7 @@ const Sample = () => {
 				</div>
 			</section>
 			<section style={{
+				display: 'none',
 				background: 'lightblue'
 			}} >
 				<div style={{
@@ -113,6 +139,7 @@ const Sample = () => {
 				</div>
 			</section>
 			<section style={{
+				display: 'none',
 				background: 'lightgreen'
 			}} >
 				<div style={{
