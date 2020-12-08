@@ -32,7 +32,7 @@
   "author": "xuatz",
   "license": "MIT",
   "dependencies": {
-    "antd": "^2.5.0",
+    "antd": "^2.9.2",
     "axios": "^0.15.3",
     "bcrypt-nodejs": "^0.0.3",
     "bcryptjs": "^2.3.0",
