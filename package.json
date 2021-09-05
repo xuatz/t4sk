@@ -33,7 +33,7 @@
   "license": "MIT",
   "dependencies": {
     "antd": "^2.5.0",
-    "axios": "^0.15.3",
+    "axios": "^0.21.3",
     "bcrypt-nodejs": "^0.0.3",
     "bcryptjs": "^2.3.0",
     "bluebird": "^3.4.6",
